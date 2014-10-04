@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	<h1>hola</h1>
-</body>
-</html>
+{%extends "base.html"%}
+{%block contenido%}
+<h1>Registro</h1>
+<form action="" method="post">
+	{{form.as_ul}}
+	{% csrf_token %}
+	<input type="submit" value="Enviar">
+</form>
+{%endblock%}
