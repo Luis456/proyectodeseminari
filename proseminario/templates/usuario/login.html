@@ -1,9 +1,18 @@
 {%extends "base.html"%}
 {%block contenido%}
-<h1>Login</h1>
-<form action="" method="post">
-	{{form.as_ul}}
-	{% csrf_token %}
-	<input type="submit" value="Enviar">
-</form>
+<div class="contr">
+	<div class="col-xs-4 columna">
+	</div>
+	<div class="col-xs-4 columna1">
+			<div class="bannercontainer">
+				<h1>login</h1>
+				<form action="" method="post">
+				{{form.as_ul}}
+				{% csrf_token %}
+				<input type="submit" value="Enviar">
+				</form>
+			</div>
+	</div>
+	
+</div>
 {%endblock%}

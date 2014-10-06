@@ -5,9 +5,10 @@ import datetime
 
 from .models import *
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,logout,authenticate
 import pdb
+from .forms import fusuario
 
 # Create your views here.
 def pagina_principal(request):
@@ -15,11 +16,16 @@ def pagina_principal(request):
 	return render_to_response("blog/principal.html",RequestContext(request))
 def registro_usuario(request):
 	if request.method=="POST":
-		form=UserCreationForm(request.POST)
+		form=fusuario(request.POST)
 		if(form.is_valid()):
+			#usuario_nuevo=request.POST['username']
 			form.save()
+			#usuario=User.objects.get(username=usuario_nuevo)
+			#usuario.email=request.POST['email']
+			#usuario.save
+
 			return HttpResponseRedirect("/blog/")
-	form=UserCreationForm()
+	form=fusuario()
 	return render_to_response("usuario/registro.html",{"form":form},RequestContext(request))
 def login_usuario(request):
 	if request.method=="POST":

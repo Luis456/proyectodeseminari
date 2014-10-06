@@ -73,3 +73,12 @@ nav.mainmenu ul li a
 	margin:0 auto;
 	padding:0px;
 }
+.columna1{
+	border:1px solid #000;
+	height:270px;
+	overflow:hidden;
+	border-radius:10px;
+	text-align:center;
+	margin-top:60px;
+	font-size: 15px;
+}
