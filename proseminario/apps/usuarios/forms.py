@@ -24,3 +24,8 @@ class fusuario(UserCreationForm):
         if commit:
             user.save()
         return user
+
+class fperfil(ModelForm):
+    class Meta:
+        model=Perfil
+        exclude=['user']

@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,logout,authenticate
 import pdb
-from .forms import fusuario
+from .forms import *
 
 # Create your views here.
 def pagina_principal(request):
@@ -18,9 +18,10 @@ def registro_usuario(request):
 	if request.method=="POST":
 		form=fusuario(request.POST)
 		if(form.is_valid()):
-			#usuario_nuevo=request.POST['username']
+			usuario_nuevo=request.POST['username']
 			form.save()
-			#usuario=User.objects.get(username=usuario_nuevo)
+			usuario=User.objects.get(username=usuario_nuevo)
+			perfil=Perfil.objects.create(user=usuario)
 			#usuario.email=request.POST['email']
 			#usuario.save
 
@@ -44,4 +45,18 @@ def logout_usuario(request):
 	logout(request)
 	return HttpResponseRedirect("/blog/")
 def perfil(request):
-	return render_to_response("usuario/perfil.html",{"nombre":request.session["name"]},RequestContext(request))
+	if request.user.is_authenticated():
+		usuario=request.user
+		if request.method=="POST":
+			u=User.objects.get(username=usuario)
+			perfil=Perfil.objects.get(user=u)
+			formulario=fperfil(request.POST,request.FILES,instance=perfil)
+			if formulario.is_valid():
+				formulario.save()
+				return render_to_response("usuario/perfil.html",{"nombre":request.session["name"]},RequestContext(request))
+		else:
+			formulario=fperfil()
+		return render_to_response("usuario/perfil.html",{"nombre":request.session["name"],"formulario":formulario},RequestContext(request))
+	else:
+		return HttpResponseRedirect("/login/")
+	
