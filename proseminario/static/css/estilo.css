@@ -1,9 +1,3 @@
-body{
-    font-family:mifuente ;
-    font-size: 9px;
-    color: #313131;
-}
-
 *{
 	
 	margin:0px;
@@ -31,6 +25,7 @@ nav.mainmenu
 	box-shadow:0px 0px 10px 0.1px #000;
 	padding:0px;
 	margin:0px;
+	text-align:center;
 	
 }
 .logos{
@@ -75,12 +70,13 @@ nav.mainmenu ul li a
 }
 .columna1{
 	border:1px solid #000;
-	height:270px;
+	height:280px;
 	overflow:hidden;
 	border-radius:10px;
 	text-align:center;
 	margin-top:60px;
 	font-size: 15px;
+	background:#FFFAFA;
 }
 .bannercontainer1{
 	border:5px solid #000;
@@ -165,3 +161,13 @@ body {
  	display: compact;
 	 	
 } 
+.borde {
+	
+	height:400px;
+	overflow:hidden;
+	border-radius:15px;
+	text-align:center;
+	margin-top:50px;
+	font-size: 25px;
+
+}

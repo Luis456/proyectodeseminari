@@ -39,7 +39,18 @@ def login_usuario(request):
 				login(request,resultado)
 				request.session["name"]=username
 				return HttpResponseRedirect("/blog/perfil/")
-	form=AuthenticationForm()
+			else:
+				request.session['cont']=request.session['cont']+1
+				aux=request.session['cont']
+				if aux>3:
+					return HttpResponseRedirect("/blog/active/")
+				estado=True
+				mensaje="Error en los datos "+str(aux)
+				datos={'form':form,'estado':estado,'mensaje':mensaje}
+				return render_to_response("usuario/login.html",datos,context_instance=RequestContext(request))
+	else:
+		request.session['cont']=0
+		form=AuthenticationForm()
 	return render_to_response("usuario/login.html",{"form":form},RequestContext(request))
 def logout_usuario(request):
 	logout(request)
@@ -59,4 +70,6 @@ def perfil(request):
 		return render_to_response("usuario/perfil.html",{"nombre":request.session["name"],"formulario":formulario},RequestContext(request))
 	else:
 		return HttpResponseRedirect("/login/")
+def active_los(request):
 	
+	return render_to_response("usuario/active.html",RequestContext(request))
