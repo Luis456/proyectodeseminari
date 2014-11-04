@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'proseminario.apps.usuarios',
+    'captcha',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -85,3 +86,6 @@ STATIC_URL = '/static/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'proseminario/media')
 TEMPLATE_DIRS=(os.path.join(BASE_DIR,'proseminario/templates'),)
 STATICFILES_DIRS=(os.path.join(BASE_DIR,'proseminario/static'),)
+#Capcha
+RECAPTCHA_PUBLIC_KEY = '6LcOTvwSAAAAAMQYA4DpRIL-0z7v4cQXZghF7yp4'
+RECAPTCHA_PRIVATE_KEY = '6LcOTvwSAAAAAEu9W75F_mKDpQUwS8dYcuZNXkgs'

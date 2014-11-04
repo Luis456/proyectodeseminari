@@ -70,13 +70,17 @@ nav.mainmenu ul li a
 }
 .columna1{
 	border:1px solid #000;
-	height:280px;
+	height:500px;
 	overflow:hidden;
 	border-radius:10px;
 	text-align:center;
 	margin-top:60px;
 	font-size: 15px;
 	background:#FFFAFA;
+}
+.columna2{
+	text-align:center;
+
 }
 .bannercontainer1{
 	border:5px solid #000;

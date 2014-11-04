@@ -6,7 +6,10 @@ from models import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+from captcha.fields import ReCaptchaField
 
+class fcapcha(forms.Form):
+    captcha = ReCaptchaField(attrs={'theme' : 'clean'})
 class fusuario(UserCreationForm):
     username = forms.CharField(max_length=40,required=True,help_text=False,label="Nick")
     password2 = forms.CharField(help_text=False,label="Contraseña de confirmacion",widget=forms.PasswordInput)

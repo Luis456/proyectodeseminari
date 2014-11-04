@@ -42,11 +42,13 @@ def login_usuario(request):
 			else:
 				request.session['cont']=request.session['cont']+1
 				aux=request.session['cont']
-				if aux>3:
-					return HttpResponseRedirect("/blog/active/")
 				estado=True
 				mensaje="Error en los datos "+str(aux)
-				datos={'form':form,'estado':estado,'mensaje':mensaje}
+				if aux>3:
+					formulario2=fcapcha()
+					datos={'form':form,'formulario2':formulario2,'estado':estado,'mensaje':mensaje}
+				else:
+					datos={'form':form,'estado':estado,'mensaje':mensaje}
 				return render_to_response("usuario/login.html",datos,context_instance=RequestContext(request))
 	else:
 		request.session['cont']=0
