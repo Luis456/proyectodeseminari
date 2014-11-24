@@ -30,27 +30,22 @@
         <div class="col-xs-6 columna">
           <nav class="mainmenu">
             <ul>
-              <li class="home">
-                <a href="/blog/">HOME</a>
-              </li>
+              <li class="home"><a href="/blog/">HOME</a> </li>
               
-              <li class="registro">
-                <a href="/blog/registro/">REGISTRO</a>
-              </li>
-              <li class="Logout">
-                <a href="/blog/logout/">{{user}} LOGOUT</a>
-                
-              </li>
-              <li class="login">
-                <a href="/blog/login/">LOGIN</a>
-              </li>
+              <li class="registro"><a href="/blog/registro/">REGISTRO</a></li>
+              {% if not user.is_anonymous %}
+              <li class="Logout"> <a href="/blog/logout/">{{user}} LOGOUT</a></li>
+              {% endif %}
+              {% if user.is_anonymous %}
+              <li class="login"><a href="/blog/login/">LOGIN</a> </li>
+              {% endif %}
             </ul>
           </nav>
         </div>
         <div class="col-xs-3 columna ">
           <div class="info">
             <p>
-              
+              <img src="/media/{{ user.perfil.avatar.url_50x50}}" alt="avatar">
               
             </p>
           </div>
