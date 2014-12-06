@@ -1,6 +1,13 @@
 {%extends "base.html"%}
 {%block contenido%}
-<h1>
-	Muchos intentos usted esta bloqueado
-</h1>
+{%if user.is_authenticated %}
+<h1>Bienvenido!!! {{nombre}}</h1>
+{%endif%}
+	{%if not user.is_authenticated%}
+	<div>
+		<h1>Necesitas registrate para entrar</h1>
+	<a href="http://localhost:8000/blog/registro/">Registrate</a>
+	</div>
+{%endif%}
+			
 {%endblock%}

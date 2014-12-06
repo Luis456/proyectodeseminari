@@ -14,4 +14,7 @@ urlpatterns = patterns('',
 	url(r'^perfil/$',perfil),
 	url(r'^logout/$',logout_usuario),
 	url(r'^active/$',active_los),
+	url(r'^chat/$',chat),
+    url(r'^modificarperfil/$',editar_perfil),
+    url(r'^error/$',error_vista),
 )

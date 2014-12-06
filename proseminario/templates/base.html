@@ -35,6 +35,7 @@
               <li class="registro"><a href="/blog/registro/">REGISTRO</a></li>
               {% if not user.is_anonymous %}
               <li class="Logout"> <a href="/blog/logout/">{{user}} LOGOUT</a></li>
+              <li class=><a href="/blog/registros/tema/">PREGUNTAS</a> </li>
               {% endif %}
               {% if user.is_anonymous %}
               <li class="login"><a href="/blog/login/">LOGIN</a> </li>
@@ -42,17 +43,67 @@
             </ul>
           </nav>
         </div>
-        <div class="col-xs-3 columna ">
-          <div class="info">
-            <p>
-              <img src="/media/{{ user.perfil.avatar.url_50x50}}" alt="avatar">
-              
-            </p>
-          </div>
-        </div>
+        
       </div>  
     </div>
   </ul>
+<ul >  
+<div class="col-xs-4 columna ">
+          <div class="info">
+            {% if not user.is_anonymous %}
+            <p>
+              <img src="/media/{{ user.perfil.avatar.url_200x200}}" alt="avatar">
+            </p>
+            {% endif %}
+            <h4>Usuario {{user}}</h4>
+            <h4>Pais : {{user.perfil.pais }}</h4>
+            {% if not user.is_anonymous %}
+            <ul class="nav nav-pills">
+            <li><a href="/blog/perfil/">Perfil</a></li>
+            <li><a href="/blog/active/">Partida</a></li>
+            </ul>
+            {% endif %}
+          </div>
+          <div >
+              <hr>
+               <div id="calendar"></div>
+          </div>
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"class="active"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="/static/img/one.jpg" alt="...">
+      <div class="carousel-caption">
+       
+      </div>
+    </div>
+    <div class="item">
+      <img src="/static/img/zero 05.png" alt="...">
+      <div class="carousel-caption">
+       
+      </div>
+      
+    </div>
+    
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+</div>
+
     {%block contenido%}
 
     {%endblock%}

@@ -1,14 +1,24 @@
 {%extends "base.html"%}
 {%block contenido%}
 <h1>Bienvenido!!! {{nombre}}</h1>
+
 <form action="" method="post" enctype="multipart/form-data">
 				{% csrf_token %}
 				{{ formulario.as_p }}
 				<button type="submit" class="btn btn-primary">Activar Cuenta</button>
-			</form>
-
-<p> <a href="/blog/registro/" class="btn btn-primary btn-lg"" role="button">Modificar Datos </a> </p>
-			
+</form>
+<div class="col-xs-2">
+	<ul class="nav nav-pills">
+			  
+	  <li><a href="/blog/modificarperfil/">Modificar </a></li>
+			  
+			  
+	</ul>
+</div>
+<h2>Pais : {{user.perfil.pais }}</h2>
+			<img src="/media/{{ user.perfil.avatar}}" alt="avatar">
 			<img src="/media/{{ user.perfil.avatar.url_50x50}}" alt="avatar">
+			<img src="/media/{{ user.perfil.avatar.url_200x200}}" alt="avatar">
+
 			
 {%endblock%}
